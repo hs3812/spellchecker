@@ -3,7 +3,7 @@ import sys
 from string import punctuation as puc
 from nltk.stem import PorterStemmer
 
-
+#this loads the dictionary into a set
 def load_dictionary(dict,ps):
     try:
         fp = open(dict, mode="r")
@@ -16,14 +16,14 @@ def load_dictionary(dict,ps):
     fp.close()
     return my_set
 
-
+#this function writes misspelled words into file
 def write_misspelled(mylist):
     with open("misspelled.txt", "w") as fp:
         fp.write("Misspelled words are:\n")
         for word in mylist:
             fp.write("%s\n" % word)
 
-
+#cleaning a sentence
 def clean_data(line_to_clean):
     cleaned_line = line_to_clean.lower()
     cleaned_line = cleaned_line.translate(str.maketrans("", "", puc))
